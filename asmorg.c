@@ -305,6 +305,7 @@ struct Op
 enum
 {
     DIR_ZERO,
+    DIR_LONG,
 
     DIR_COUNT
 };
@@ -727,6 +728,19 @@ asmline()
             caddr += op1.val;
             csize += op1.val;
         }
+        else if(!strcmp(mnem, ".long"))
+        {
+            if(numop != 1 || op1.type != OP_IMM || op1.val <= 0)
+            {
+                asmfatal("Invalid operand for directive '.long'");
+            }
+
+            l = addline(0, op1, op2);
+            l->dir = DIR_LONG;
+            l->val = op1.val;
+            caddr += 4;
+            csize += 4;
+        }
         else
         {
             if(numop == 0)
@@ -1075,6 +1089,11 @@ codegen(FILE *f)
                     {
                         emit(f, 0);
                     }
+                } break;
+
+                case DIR_LONG:
+                {
+                    emitd(f, l->val);
                 } break;
 
                 default:
