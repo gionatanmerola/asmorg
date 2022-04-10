@@ -1230,12 +1230,14 @@ assemble(char *fnamein, char *fnameout)
     srcl = 1;
     while(asmline());
 
+#if 0
     for(i = 0;
         i < ltblsz;
         ++i)
     {
         printf("%s:\t\t0x%.8x\n", ltbl[i].name, ltbl[i].addr);
     }
+#endif
 
     fout = fopen(fnameout, "w");
     for(i = 0x00;
