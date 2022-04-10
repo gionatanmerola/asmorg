@@ -2,7 +2,7 @@
 
 ## Simplest assembler ever
 
-ASMORG is a simple assembler which turn AT&T Assembly code into an 32-bit statically link executable (ELF).
+ASMORG is a simple assembler which turns AT&T Assembly code into a 32-bit statically linked executable ELF file.
 
 ## How to build
 
