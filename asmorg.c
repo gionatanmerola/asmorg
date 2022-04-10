@@ -1260,6 +1260,8 @@ assemble(char *fnamein, char *fnameout)
     return(0);
 }
 
+#ifndef ASMORG_API
+
 int main(int argc, char *argv[])
 {
     char *fin = 0;
@@ -1284,3 +1286,5 @@ int main(int argc, char *argv[])
     assemble(fin, fout);
     return(0);
 }
+
+#endif
